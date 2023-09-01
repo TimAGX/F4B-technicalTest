@@ -41,9 +41,7 @@ app.post("/accounts", (req, res) => {
   };
 
   //   accounts[accountNumber] = newAccount;
-  console.log(newAccount);
   accounts = [...accounts, newAccount];
-  console.log(accounts);
   accountCounter++;
 
   res.status(201).json(newAccount);
@@ -66,7 +64,6 @@ app.get("/accounts/:accountNumber", (req, res) => {
   const { accountNumber } = req.params;
   // const account = accounts[accountNumber];
   const account = accounts.filter((acc) => acc.accountNumber === accountNumber);
-  console.log("account found", account[0] ?? undefined);
 
   if (!account) {
     return res.status(404).json({ error: "Account not found." });

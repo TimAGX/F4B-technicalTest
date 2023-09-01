@@ -1,3 +1,5 @@
+This project is available on https://bank-account-management-api.onrender.com
+
 Bank Account Management API
 
 **Objective:**
@@ -35,7 +37,6 @@ npm start:dev to start server using nodemon
 * The server will start on port 8080.
 
 * Use a tool like Postman or curl to make API requests to the available endpoints.
-*  Link to live site  https://bank-account-management-api.onrender.com
   
 ## Endpoints
  Create a Bank Account
