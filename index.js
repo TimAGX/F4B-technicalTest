@@ -22,15 +22,15 @@ const app = express();
 app.use(bodyParser.json());
 
 let accountCounter = 1;
-const account = {};
+const accounts = {};
 
 app.post("/accounts", (req, res) => {
-    console.log('Home screen')
+   
   const { accountHolder, dob, accountType, initialBalance } = req.body;
   if (!accountHolder || !dob || !accountType || !initialBalance) {
     return res.status(400).json({
       error:
-        "Account holder name, DOB, account type and initial balanc are needed!",
+        "Account holder name, DOB, account type and initial balance are needed!",
     });
   }
   //request for new account information
@@ -44,7 +44,7 @@ app.post("/accounts", (req, res) => {
     balance: initialBalance,
   };
 
-  account[accountNumber] = newAccount;
+  accounts[accountNumber] = newAccount;
   accountCounter++;
 
   res.status(201).json(newAccount);
@@ -58,9 +58,28 @@ function generateAccountNumber(holder, type, balance) {
   return accountNumber.slice(0, 10)//ensuring it is a 10 digit number
 }
 
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
 
+//Resolve a Bank account
 
+app.get('./accounts/:accountNumber', (req,res) => {
+    const { accountNumber } = req.params;
+    const account = accounts[accountNumber];
+    
+    if(!accounts) {
+        return res.status(404).json({ error: 'Account not found.'});
+    }
+    
+    res.json(account);
+})
+
+// fetch all bank accounts
+
+app.get('/account', (req, res) => {
+    const accountList = object.values(accounts);
+    res.json(accountList);
+    })
+
+    const PORT = 3000;
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
