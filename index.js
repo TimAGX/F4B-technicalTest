@@ -1,20 +1,3 @@
-// const express = require('express')
-// const data = require('./dummy')
-
-// const api = express();
-
-// const HOST = 'localhost'
-// const PORT = 8888
-
-// api.get('/', (req,res)=>{
-//     res.send('Welcome')
-// })
-
-// api.get('/people', (req,res)=>{
-//     res.status(200).json(data)
-// })
-// api.listen(PORT, ()=>console.log(`API running at ${HOST}:${PORT}`))
-
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -27,6 +10,7 @@ const accounts = {};
 app.post("/accounts", (req, res) => {
    
   const { accountHolder, dob, accountType, initialBalance } = req.body;
+
   if (!accountHolder || !dob || !accountType || !initialBalance) {
     return res.status(400).json({
       error:
@@ -52,7 +36,7 @@ app.post("/accounts", (req, res) => {
 
 function generateAccountNumber(holder, type, balance) {
   const randomNumber = Math.floor(Math.random() * 1000000000); //9 digit number
-  const formattedBalance = balance.toFixed(2).replace(".", ""); //remove dcimals and format as string
+  const formattedBalance = balance.toFixed(2).replace(".", ""); //remove decimals and format as string
   const accountNumber = `${randomNumber}${accountCounter}${holder.substring(0, 3)}${type.substring(0, 2)}${formattedBalance}`;
 
   return accountNumber.slice(0, 10)//ensuring it is a 10 digit number
@@ -61,11 +45,11 @@ function generateAccountNumber(holder, type, balance) {
 
 //Resolve a Bank account
 
-app.get('./accounts/:accountNumber', (req,res) => {
+app.get('/accounts/:accountNumber', (req,res) => {
     const { accountNumber } = req.params;
     const account = accounts[accountNumber];
     
-    if(!accounts) {
+    if(!account) {
         return res.status(404).json({ error: 'Account not found.'});
     }
     
@@ -74,10 +58,12 @@ app.get('./accounts/:accountNumber', (req,res) => {
 
 // fetch all bank accounts
 
-app.get('/account', (req, res) => {
-    const accountList = object.values(accounts);
+app.get('/accounts', (req, res) => {
+    const accountList = Object.values(accounts);
     res.json(accountList);
     })
+
+    //Server
 
     const PORT = 3000;
     app.listen(PORT, () => {
