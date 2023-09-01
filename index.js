@@ -7,6 +7,10 @@ app.use(bodyParser.json());
 let accountCounter = 1;
 let accounts = [];
 
+app.get('/', (req,res)=>{
+    res.send('Bank Account Management API')
+})
+
 app.post("/accounts", (req, res) => {
   const { accountHolder, dob, accountType, initialBalance } = req.body;
 

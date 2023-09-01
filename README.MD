@@ -33,7 +33,7 @@ npm i or npm install
 npm run start to start server using node
 npm start:dev to start server using nodemon
 ```
-* The server will start on port 3000. You can access the API at http://localhost:4000.
+* The server will start on port 8080.
 
 * Use a tool like Postman or curl to make API requests to the available endpoints.
 *  Link to live site  https://rose-vivacious-caiman.cyclic.app
