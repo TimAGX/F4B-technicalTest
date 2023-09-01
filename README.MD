@@ -4,7 +4,6 @@ Bank Account Management API
 
 The objective of this technical test is to assess your skills in designing and implementing a simple RESTful API using Node.js and Express. You are required to create a basic Bank Account Management API with three endpoints: one to create a bank account, one to resolve a bank account, and one to fetch all bank accounts.
 
-  
 ## Features
 - Create a new bank account with account holder details.
 - fetch a bank account by providing its account number.
@@ -22,7 +21,7 @@ git clone https://github.com/TimAGX/F4B-technicalTest
 ```
 2. Navigate into project directory and install dependencies
  ```
-   cd F4B-technical-test
+   cd F4B-technicalTest
 ```
 3. Install node modules
   ```
@@ -36,35 +35,29 @@ npm start:dev to start server using nodemon
 * The server will start on port 8080.
 
 * Use a tool like Postman or curl to make API requests to the available endpoints.
-*  Link to live site  https://rose-vivacious-caiman.cyclic.app
+*  Link to live site  https://bank-account-management-api.onrender.com
   
 ## Endpoints
  Create a Bank Account
- ` POST /create-account`
+ ` POST /accounts`
   * Request Body:
-  ```
+  
   {
     "accountHolderName": "John Doe",
     "dob": "1990-01-01",
     "accountType": "Savings",
     "initialBalance": 1000
 }
-  ```
+  
 * Response:
-   ``` 
-   {
-    "statusCode": 201,
-    "message": "Account created successfully",
-    "data": {
-        "accountNumber": "6340777668",
-        "accountHolderName": "Victor Chuka",
-        "dob": "1998-02-05T00:00:00.000Z",
-        "accountType": "Current",
-        "balance": 10000
+ {
+        "accountNumber": "2294259911",
+        "accountHolder": "tim",
+        "dob": "1999-05-09",
+        "accountType": "Savings",
+        "balance": 100022324
     }
-  }
       
-   ```
 Resolve a Bank Account 
 Endpoint: `GET /account/:accountNumber`
 * Response
@@ -72,12 +65,12 @@ Endpoint: `GET /account/:accountNumber`
  {
     "statusCode": 200,
     "message": "Account found",
-    "data": {
-        "accountNumber": "6851825673",
-        "accountHolderName": "Barny Victor",
-        "dob": "1998-02-05T00:00:00.000Z",
+    "data":    {
+        "accountNumber": "1532641593",
+        "accountHolder": "Tobiloba",
+        "dob": "2003-06-10",
         "accountType": "Savings",
-        "balance": 100
+        "balance": 1450000
     }
 }
  
@@ -92,20 +85,20 @@ Endpoint: `GET /accounts`
     "statusCode": 200,
     "message": "Accounts found",
     "data": [
-        {
-            "accountNumber": "6790874819",
-            "accountHolderName": "John Doe",
-            "dob": "1990-01-01T00:00:00.000Z",
-            "accountType": "Savings",
-            "balance": 1000
-        },
-        {
-            "accountNumber": "6851825673",
-            "accountHolderName": "Barny Victor",
-            "dob": "1998-02-05T00:00:00.000Z",
-            "accountType": "Savings",
-            "balance": 100
-        }
+           {
+        "accountNumber": "5776301881",
+        "accountHolder": "Olugenga Timothy",
+        "dob": "2000-05-09",
+        "accountType": "Current",
+        "balance": 15000000
+    },
+    {
+        "accountNumber": "2787954052",
+        "accountHolder": "Ayomide",
+        "dob": "2003-06-10",
+        "accountType": "Current",
+        "balance": 1500000
+    }
     ]
 }
 
@@ -113,7 +106,5 @@ Endpoint: `GET /accounts`
 
 
 ## Contributing
- * Barny Victor 
+ Olugbenga Timothy 
   
-## License
- This project is licensed under the MIT License.
